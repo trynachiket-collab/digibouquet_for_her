@@ -1,4 +1,6 @@
-// app/bouquet/page.tsx
+// app/garden/page.tsx
+export const dynamic = "force-dynamic";  // ← add this line
+
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
