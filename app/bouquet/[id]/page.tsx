@@ -1,14 +1,20 @@
 // app/bouquet/[id]/page.tsx
-import { supabase } from "@/lib/supabase"; // we'll make this below
+// app/bouquet/[id]/page.tsx
+import { supabase } from "@/lib/supabase";
 import Bouquet from "../../../components/bouquet/Bouquet";
 import Image from "next/image";
 import Link from "next/link";
+
+// ← add these two lines
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 interface Params {
   params: Promise<{
     id: string;
   }>;
 }
+
 
 export default async function BouquetPage(props: Params) {
   const params = await props.params;
