@@ -1,11 +1,9 @@
 // app/bouquet/[id]/page.tsx
-// app/bouquet/[id]/page.tsx
 import { supabase } from "@/lib/supabase";
 import Bouquet from "../../../components/bouquet/Bouquet";
 import Image from "next/image";
 import Link from "next/link";
 
-// ← add these two lines
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
@@ -14,7 +12,6 @@ interface Params {
     id: string;
   }>;
 }
-
 
 export default async function BouquetPage(props: Params) {
   const params = await props.params;
@@ -31,32 +28,38 @@ export default async function BouquetPage(props: Params) {
   }
 
   return (
-    <div className="text-center p-6 bg-[#F9F9EE]">
-      {/* Logo/Branding */}
+    <div className="text-center p-6 bg-[#F9F9EE] min-h-screen">
+      {/* Logo */}
       <Link href="/">
         <Image
           src="/digibouquet.png"
-          alt="digibouquet"
+          alt="Nachi Bouquet for her"
           width={200}
           height={80}
           className="object-cover mx-auto my-10"
           priority
         />
       </Link>
-      <h2 className="text-lg mb-14 ">Hi, I made this bouquet for you!</h2>
+
+      <h2 className="text-lg mb-14">
+        🌸 Hi, I made this bouquet especially for you! 🌸
+      </h2>
+
       <Bouquet bouquet={data} />
-      <p className="text-sm text-gray-500">
-        made with digibouquet, a tool by{" "}
+
+      <div className="mt-8">
+        <p className="text-sm text-gray-500">
+          Made with ❤️ by <span className="font-semibold">Nachi</span>, just
+          for you.
+        </p>
+
         <Link
-          href="https://x.com/pau_wee_"
-          className="text-sm underline text-gray-500 mt-2"
+          href="/"
+          className="inline-block mt-3 text-sm underline text-pink-600 hover:text-pink-700"
         >
-          @pau_wee_
+          Create your own digital bouquet 🌷
         </Link>
-      </p>
-      <Link href="/" className="text-sm underline text-gray-500 mt-2">
-        make a bouquet now!
-      </Link>
+      </div>
     </div>
   );
 }
