@@ -115,8 +115,13 @@ export default function Bouquet({ bouquet }: BouquetReadOnlyProps) {
                 </p>
               </div>
 
-              <div className="text-left">
+              {/* <div className="text-left">
                 <p>{bouquet.letter.message}</p>
+              </div> */}
+              <div className="text-left">
+                <p className="whitespace-pre-wrap break-words [overflow-wrap:anywhere] leading-relaxed">
+                  {bouquet.letter?.message || ""}
+                </p>
               </div>
 
               <div className="flex flex-col gap-2 justify-end items-end">
